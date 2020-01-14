@@ -1,0 +1,11 @@
+server:
+  port: 3344
+  
+spring:
+  application:
+    name: microcloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/mxd888/microcloud-conf.git

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SpringCloud微服务</title>
+<link rel="icon" type="image/x-icon" href="/images/logo.ico" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+<form th:action="@{/consumer/upload}" method="post" enctype="multipart/form-data">
+姓名：<input type="text" name="name" value="米晓东"/><br>
+照片：<input type="file" name="photo"/><br>
+<input type="submit"  value="提交"/>
+<input type="reset" value="重置"/>
+</form>
+<form th:action="@{/consumer/test}"  method="post" enctype="multipart/form-data" >
+姓名：<input type="text" name="name" value="米晓东"/><br>
+照片：<input type="file" name="photo"/><br>
+<input type="submit"  value="测试提交"/>
+</form>
+</body>
+</html>

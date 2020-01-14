@@ -1,0 +1,18 @@
+server:
+  port: 7002
+
+spring: 
+  security: 
+    user: 
+      name: mxdEureka
+      password: mxdEureka
+  
+eureka: 
+  instance:
+    hostname: eureka7002.com  #eureka服务端的实例名
+  client: 
+    register-with-eureka: false #false表示不向eureka注册自己
+    fetch-registry: false #false表示自己就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    service-url:            #以下密码必加
+      defaultZone: http://mxdEureka:mxdEureka@eureka7001.com:7001/eureka/,http://mxdEureka:mxdEureka@eureka7003.com:7003/eureka/  #设置与eureka server交互的地址查询服务和注册都需要依赖的地址
+ 

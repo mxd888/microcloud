@@ -1,0 +1,41 @@
+server:
+  port: 9200
+  
+#若上传大文件则上传控制交由处理的微服务来进行，所以应该在访问路径前追加/zuul/**
+#hystrix--ribbon---用于提升大文件超时限制
+hystrix: 
+  command: 
+    default: 
+      execution: 
+        isolation: 
+          thread: 
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+spring:
+  application:
+    name: microcloud-upload
+  servlet:
+    multipart:
+      enabled: true             #启用servlet上传
+      max-file-size: 100MB      #设置单个文件的最大长度
+      max-request-size: 100MB   #设置最大的请求文件的大小
+      file-size-threshold: 1MB  #当上传文件达到1MB的时候进行磁盘写入
+      location: /               #上传的临时目录
+      
+eureka:
+  client: 
+    service-url: 
+      defaultZone: http://mxdEureka:mxdEureka@eureka7001.com:7001/eureka/,http://mxdEureka:mxdEureka@eureka7002.com:7002/eureka/,http://mxdEureka:mxdEureka@eureka7003.com:7003/eureka/
+  instance:
+    instance-id: microcloud-upload9200  #自定义服务名字
+    prefer-ip-address: true         #访问路径显示IP
+    
+    
+
+info:
+  app.name: MiXiaoDong-microcloud
+  company.name: www.hdu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
